@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* realukcasinosites.com — British Premium / White · Red · Gold theme */
+/* Palette: Ivory White · Crimson Red · Imperial Gold · Charcoal */
+@layer base {
+  :root {
+    --font-sans: var(--font-inter);
+    --font-display: var(--font-playfair);
+
+    /* Core */
+    --background: 0 0% 98%;           /* #fafafa ivory white */
+    --foreground: 220 15% 18%;        /* #252830 deep charcoal */
+
+    --card: 0 0% 100%;                /* pure white cards */
+    --card-foreground: 220 15% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 18%;
+
+    /* Primary = british crimson red */
+    --primary: 350 72% 42%;           /* #C0223A british red */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary = warm off-white */
+    --secondary: 40 30% 96%;          /* #f8f6f2 cream */
+    --secondary-foreground: 220 15% 18%;
+
+    --muted: 40 20% 94%;              /* #f2ede8 light mist */
+    --muted-foreground: 220 10% 50%;  /* mid grey */
+
+    /* Accent = imperial gold */
+    --accent: 42 82% 46%;             /* #D4A017 imperial gold */
+    --accent-foreground: 220 15% 18%;
+
+    --destructive: 350 72% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 15% 88%;             /* warm light border */
+    --input: 40 20% 94%;
+    --ring: 42 82% 46%;
+
+    --radius: 0.75rem;                /* smooth rounded corners */
+
+    /* Custom brand tokens */
+    --cream: 40 30% 96%;
+    --mist: 40 20% 94%;
+    --crimson: 350 72% 42%;
+    --crimson-light: 350 72% 96%;
+    --crimson-dark: 350 72% 30%;
+    --gold: 42 82% 46%;
+    --gold-light: 42 82% 60%;
+    --gold-muted: 42 40% 72%;
+    --gold-bg: 42 60% 96%;
+    --charcoal: 220 15% 18%;
+    --charcoal-mid: 220 10% 38%;
+    --charcoal-muted: 220 8% 58%;
+    --steel: 40 15% 88%;              /* border colour */
+    --white: 0 0% 100%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 15% 18%;
+    --sidebar-primary: 350 72% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 30% 96%;
+    --sidebar-accent-foreground: 220 15% 18%;
+    --sidebar-border: 40 15% 88%;
+    --sidebar-ring: 42 82% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply bg-background;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    @apply font-display;
+  }
+}
+
+/* ── Gold & Red rule decorations ── */
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(to right, transparent, hsl(var(--gold)), transparent);
+}
+.rule-crimson {
+  height: 2px;
+  background: hsl(var(--crimson));
+}
+
+/* ── Gold shimmer on interactive elements ── */
+.gold-shimmer {
+  background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-light)) 50%, hsl(var(--gold)) 100%);
+  background-size: 200% 200%;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Rank chip badge ── */
+.rank-chip {
+  @apply inline-flex items-center justify-center font-display font-bold text-xs tracking-widest uppercase;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  background: hsl(var(--crimson));
+  color: #fff;
+  border-radius: 0.375rem;
+}
+
+/* ── Animations ── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 hsla(350,72%,42%,0.35); }
+  50%       { box-shadow: 0 0 0 8px hsla(350,72%,42%,0); }
+}
+
+.animate-fade-in     { animation: fade-in     0.5s ease-out both; }
+.animate-fade-in-up  { animation: fade-in-up  0.6s ease-out both; }
+.animate-slide-up    { animation: slide-up    0.4s ease-out both; }
+.animate-scale-in    { animation: scale-in    0.3s ease-out both; }
+.animate-pulse-red   { animation: pulse-glow  2s ease-in-out infinite; }
+
+/* ── Delay utilities ── */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(var(--mist)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--gold-muted)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--gold)); }
+
+/* ── Section divider line ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, hsl(var(--gold) / 0.4), transparent);
+}
