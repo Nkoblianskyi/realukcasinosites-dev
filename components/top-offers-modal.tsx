@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { X, ArrowRight, Star, Crown } from "lucide-react"
+import { X, ArrowRight, Star } from "lucide-react"
 import { bettingSites } from "@/data/betting-sites"
 
 function StarRating({ rating }: { rating: number }) {
@@ -56,9 +56,6 @@ export function TopOffersModal() {
         {/* Header */}
         <div className="bg-secondary px-6 py-4 flex items-center justify-between border-b border-steel">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-crimson/10 border border-crimson/20 rounded-full flex items-center justify-center">
-              <Crown className="w-4 h-4 text-crimson" aria-hidden="true" />
-            </div>
             <div>
               <p className="text-[9px] font-sans font-bold tracking-[0.3em] uppercase text-gold">
                 Exclusive Offer
